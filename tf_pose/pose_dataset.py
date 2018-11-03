@@ -397,7 +397,7 @@ def get_dataflow_batch(path, is_train, batchsize, img_path=None):
 
 class DataFlowToQueue(threading.Thread):
     def __init__(self, ds, placeholders, queue_size=5):
-        super().__init__()
+        super(DataFlowToQueue, self).__init__()
         self.daemon = True
 
         self.ds = ds
@@ -425,7 +425,7 @@ class DataFlowToQueue(threading.Thread):
 
     def start(self):
         self._sess = tf.get_default_session()
-        super().start()
+        super(DataFlowToQueue, self).start()
 
     def set_coordinator(self, coord):
         self._coord = coord
